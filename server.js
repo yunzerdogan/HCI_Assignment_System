@@ -1,6 +1,7 @@
 const express = require('express');
 const sqlite = require('sqlite3')
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
 
@@ -33,10 +34,16 @@ db.serialize(() => {
 
 app.listen(3000);
 
+app.use(express.static(path.join(__dirname, 'views')));
+
 app.get('/', (req, res) => {
   res.render('index');
 });
 
 app.get('/home', (req, res) => {
   res.render('home');
+<<<<<<< HEAD
 });
+=======
+})
+>>>>>>> 250dd02 (fixed a bug in assignment page)
