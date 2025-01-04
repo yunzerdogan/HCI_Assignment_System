@@ -1,0 +1,95 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+header .logo {
+    height: 40px;
+}
+
+header .button {
+    padding: 10px 20px;
+    background-color: #91AA00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+header .button:hover {
+    background-color: #728600;
+}
+
+a {
+    text-decoration: none;
+}
+body {
+    font-family: 'Arial', sans-serif;
+}
+.green-box {
+    border: 2px solid #91AA00;
+    padding: 10px;
+    margin: 5px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    width: 25%;
+}
+th {
+    background-color: #91AA00;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #91AA00;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #dee2e6;
+}
+.green-background {
+    color: white;
+}
+.center-text {
+    text-align: center;
+}
+.green-box h4:first-of-type {
+    margin-top: 5px;
+    font-size: 1em;
+}
+.dashed-box {
+    border: 2px dashed #91AA00;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    text-align: center;
+}
+.dashed-box:hover{
+    background-color: #dee2e6;
+}
+.submit-button {
+    padding: 10px 20px;
+    background-color: #91AA00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit-button:hover {
+    background-color: #728600;
+}
+.submit-button-container {
+    text-align: center;
+    margin-top: 10px;
+}

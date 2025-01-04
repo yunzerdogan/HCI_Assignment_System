@@ -44,8 +44,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/home', (req, res) => {
-  res.render('home');
+app.get('/overview', (req, res) => {
+  res.render('assignmentOverview');
 })
 
 
@@ -129,4 +129,3 @@ app.get('/myassignments', (req, res) => {
     res.json(assignmentList);
   });
 });
-
