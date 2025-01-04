@@ -10,6 +10,16 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use(express.static(path.join(__dirname, 'classes')));
+// Serve static files from the "views" directory
+app.use(express.static(path.join(__dirname, 'views')));
+
+// Serve static files from the "styles" directory within "views"
+app.use('/styles', express.static(path.join(__dirname, 'views/styles')));
+
+// Serve static files from the "controller" directory
+app.use('/controller', express.static(path.join(__dirname, 'controller')));
+
 fs.open('./db/page.db', 'w', (err, fd) => {
   if(err) {
     console.log('Error creating database file');
@@ -36,9 +46,6 @@ db.serialize(() => {
 });
 
 app.listen(3000);
-
-app.use(express.static(path.join(__dirname, 'views')));
-app.use(express.static(path.join(__dirname, 'classes')));
 
 app.get('/', (req, res) => {
   res.render('index');
