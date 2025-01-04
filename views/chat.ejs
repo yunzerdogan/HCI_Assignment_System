@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat mit Tutor</title>
+<link rel="stylesheet" href="styles/chat.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h3>Tutoren</h3>
+    <div class="tutor-box" onclick="switchChat('Tutor 1', 'Kann ich helfen?')">
+      <h4>Tutor 1 - Fach A</h4>
+      <p>Letzte Nachricht: Kann ich helfen?</p>
+    </div>
+    <div class="tutor-box" onclick="switchChat('Tutor 2', 'Bitte sehen Sie die Datei an.')">
+      <h4>Tutor 2 - Fach B</h4>
+      <p>Letzte Nachricht: Die Aufgabe 3a hat einen Fehler im Template.</p>
+    </div>
+    <div class="tutor-box" onclick="switchChat('Tutor 3', 'Vielen Dank!')">
+      <h4>Tutor 3 - Fach C</h4>
+      <p>Letzte Nachricht: Vielen Dank!</p>
+    </div>
+  </div>
+  <div class="chat">
+    <div class="chat-header">
+      <h3 id="chatTitle">Chat mit Tutor 1</h3>
+		<div class="lastchat"></div>
+    </div>
+    <div class="chat-messages" id="messages">
+      <!-- Nachrichten erscheinen hier -->
+      <div class="message-box">
+        <h4>Kann ich helfen?</h4>
+        <div class="timestamp"></div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <button class="attachment-button">
+		<img src="pngegg.png" width="640" height="640" alt=""/></button>
+      <input type="text" id="messageInput" placeholder="Schreibe eine Nachricht...">
+      <button onclick="sendMessage()">Senden</button>
+    </div>
+  </div>
+  <script src="scripts/chat.js"></script>
+</body>
+</html>

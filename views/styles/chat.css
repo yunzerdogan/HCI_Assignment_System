@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+  }
+  .sidebar {
+    width: 30%;
+    background-color: white;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  .sidebar h3 {
+    margin-top: 0;
+  }
+  .tutor-box {
+    background-color: #91AA00;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .tutor-box h4 {
+    margin: 0;
+    font-size: 16px;
+  }
+  .tutor-box p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chat {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-header {
+    background-color: #ddd;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  .chat-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background-color: #fff;
+  }
+  .message-box {
+    background-color: #91AA00;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    position: relative;
+    max-width: 60%;
+  }
+  .message-box::after {
+    content: '';
+    position: absolute;
+    bottom: -9px; 
+    left: 10px; 
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-color: #91AA00;
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -5px;
+  }
+  .message-box.user-message {
+    background-color: #0078D7;
+    align-self: flex-end;
+    text-align: left; /* Ensure text is right-aligned */
+  }
+  .message-box.user-message::after {
+    left: auto;
+    right: 10px;
+    border-top-color: #0078D7;
+    border-right: 0;
+    border-left: 10px solid transparent;
+  }
+  .message-box.tutor-message {
+    background-color: #91AA00;
+    align-self: flex-start;
+    text-align: left; /* Ensure text is left-aligned */
+  }
+  .message-box.tutor-message::after {
+    left: 10px;
+    right: auto;
+    border-top-color: #91AA00;
+    border-left: 0;
+    border-right: 10px solid transparent;
+  }
+  .message-box h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+  }
+  .message-box .timestamp {
+    font-size: 12px;
+    color: white;
+    margin-top: 5px;
+    align-self: flex-end;
+    text-align: right; /* Add this line */
+  }
+  .chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  .chat-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+  }
+  .chat-input button {
+    padding: 10px 20px;
+    background-color: #91AA00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .chat-input button:hover {
+    background-color: #7f8c00;
+  }
+  .attachment-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .attachment-button img {
+    width: 20px;
+    height: 20px;
+  }
+  .message-container.user-message-container {
+    display: flex;
+    justify-content: flex-end;
+  }
