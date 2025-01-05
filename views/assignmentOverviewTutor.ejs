@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HCI Assignments System</title>
-    <link rel="stylesheet" href="/styles/assignmentOverview.css">
+    <link rel="stylesheet" href="styles/assignmentOverviewTutor.css">
+    <script src="scripts/assignmentOverviewTutor.js" defer></script>
 </head>
 <body>
     <header>
@@ -14,6 +15,12 @@
         </button>
     </header>
     <h3>Ihre Assignments</h3>
+    <select class="student-dropdown">
+        <option value="student1">Student 1</option>
+        <option value="student2">Student 2</option>
+        <option value="student3">Student 3</option>
+        <option value="student4">Student 4</option>
+    </select>
     <div class="green-box">
         <h4>Alte Assignments</h4>
         <table>
@@ -27,28 +34,52 @@
             <tr>
                 <td>Assignment 01 - HCI</td>
                 <td class="center-text">✅</td>
-                <td class="center-text">6/6</td>
+                <td class="center-text">
+                    <div class="points-container">
+                        <span class="points-display">6/6</span>
+                        <input type="number" class="points-input" value="6" min="0" max="6">
+                        <button class="ok-button" onclick="updatePoints(this)">OK</button>
+                    </div>
+                </td>
                 <td class="center-text"><a href="#">⬇️</a></td>
                 <td class="center-text"><a href="#">⬇️</a></td>
             </tr>
             <tr>
                 <td>Assignment 02 - HCI</td>
                 <td class="center-text">✅</td>
-                <td class="center-text">6/8</td>
+                <td class="center-text">
+                    <div class="points-container">
+                        <span class="points-display">6/8</span>
+                        <input type="number" class="points-input" value="6" min="0" max="8">
+                        <button class="ok-button" onclick="updatePoints(this)">OK</button>
+                    </div>
+                </td>
                 <td class="center-text"><a href="#">⬇️</a></td>
                 <td class="center-text"><a href="#">⬇️</a></td>
             </tr>
             <tr>
                 <td>Assignment 03 - HCI</td>
                 <td class="center-text">✅</td>
-                <td class="center-text">5/7</td>
+                <td class="center-text">
+                    <div class="points-container">
+                        <span class="points-display">5/7</span>
+                        <input type="number" class="points-input" value="5" min="0" max="7">
+                        <button class="ok-button" onclick="updatePoints(this)">OK</button>
+                    </div>
+                </td>
                 <td class="center-text"><a href="#">⬇️</a></td>
                 <td class="center-text"><a href="#">⬇️</a></td>
             </tr>
             <tr>
                 <td>Assignment 04 - HCI</td>
                 <td class="center-text">✅</td>
-                <td class="center-text">8/9</td>
+                <td class="center-text">
+                    <div class="points-container">
+                        <span class="points-display">8/9</span>
+                        <input type="number" class="points-input" value="8" min="0" max="9">
+                        <button class="ok-button" onclick="updatePoints(this)">OK</button>
+                    </div>
+                </td>
                 <td class="center-text"><a href="#">⬇️</a></td>
                 <td class="center-text"><a href="#">⬇️</a></td>
             </tr>
@@ -65,8 +96,14 @@
             <tr>
                 <td>Assignment 05 - HCI</td>
                 <td class="center-text">❌</td>
-                <td class="center-text">0/8</td>
-                <td class="center-text">00:10:40:50</td>
+                <td class="center-text">
+                    <div class="points-container">
+                        <span class="points-display">0/8</span>
+                        <input type="number" class="points-input" value="0" min="0" max="8">
+                        <button class="ok-button" onclick="updatePoints(this)">OK</button>
+                    </div>
+                </td>
+                <td class="center-text countdown">00:10:40:50</td>
                 <td class="center-text"><a href="#">⬇️</a></td>
             </tr>
         </table>

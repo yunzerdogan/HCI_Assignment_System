@@ -55,6 +55,10 @@ app.get('/overview', (req, res) => {
   res.render('assignmentOverview');
 });
 
+app.get('/overviewtutor', (req, res) => {
+  res.render('assignmentOverviewTutor');
+});
+
 app.get('/login', (req, res) => {
   res.render('login');
 });
