@@ -53,7 +53,15 @@ app.get('/', (req, res) => {
 
 app.get('/overview', (req, res) => {
   res.render('assignmentOverview');
-})
+});
+
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+app.get('/confirm', (req, res) => {
+  res.render('confirm');
+});
 
 
 app.post('/addCourse', (req, res) => {
