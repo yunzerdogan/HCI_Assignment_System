@@ -93,3 +93,15 @@ th {
     text-align: center;
     margin-top: 10px;
 }
+.student-dropdown {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #91AA00;
+    border-radius: 5px;
+    background-color: white;
+    color: #91AA00;
+    cursor: pointer;
+}
+.student-dropdown:hover {
+    background-color: #f8f9fa;
+}
