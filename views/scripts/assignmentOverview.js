@@ -62,4 +62,32 @@ function startCountdown() {
 document.addEventListener('DOMContentLoaded', () => {
     loadPoints();
     startCountdown();
+
+    const dropZone = document.getElementById('drop-zone');
+
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropZone.classList.add('drag-over');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('drag-over');
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropZone.innerHTML = '';
+        dropZone.classList.remove('drag-over');
+        const files = event.dataTransfer.files;
+        handleFiles(files);
+    });
+
+    function handleFiles(files) {
+        for (const file of files) {
+            console.log('File(s) dropped:', file.name);
+            const fileItem = document.createElement('div');
+            fileItem.textContent = file.name;
+            dropZone.appendChild(fileItem);
+        }
+    }
 });

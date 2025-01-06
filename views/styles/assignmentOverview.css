@@ -105,3 +105,21 @@ th {
 .student-dropdown:hover {
     background-color: #f8f9fa;
 }
+
+/* Add this to your existing CSS file */
+.dashed-box.drag-over {
+    border-color: #00f;
+    background-color: #f0f8ff;
+}
+
+.dashed-box.drag-over {
+    border-color: #00f;
+    background-color: #f0f8ff;
+}
+
+.dashed-box div {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    background-color: #f9f9f9;
+}
