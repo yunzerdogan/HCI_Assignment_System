@@ -67,6 +67,9 @@ app.get('/confirm', (req, res) => {
   res.render('confirm');
 });
 
+app.get('/chat', (req, res) => {
+  res.render('chat');
+});
 
 app.post('/addCourse', (req, res) => {
   const newCourse = new Course(

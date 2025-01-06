@@ -13,11 +13,17 @@
 
     <main>
         <img src="https://imgs.search.brave.com/OHIpgK4-g0hK8ImbTiqohKhM2GSJuRJ8kZYgMu21i-4/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjkx/ODU2MjM0L2RlL3Zl/a3Rvci9mbGFjaGVz/LXJ1bmRlcy1nciVD/MyVCQ25lcy1oJUMz/JUE0a2NoZW4tdGFz/dGUtdGljay1zeW1i/b2wtaXNvbGllcnQt/YXVmLXdlaSVDMyU5/RmVtLWhpbnRlcmdy/dW5kLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz12OG1WS1I1/ejVFSUFpU1NoRHJZ/cmV3RTVJdS1rUkp2/UGFYSmlzTkVDamxN/PQ" alt="Bestätigungskreis">
-        <button>Zurück zur Übersicht</button>
+        <button onclick="redirectToReferrer()">Zurück zur Übersicht</button>
     </main>
 
     <footer>
         Asimov Squad
     </footer>
+    <script>
+        function redirectToReferrer() {
+            const referrer = document.referrer || '/overview';
+            window.location.href = referrer;
+        }
+    </script>
 </body>
 </html>

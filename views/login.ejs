@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="styles/login.css">
+    <script src="scripts/login.js"></script>
 </head>
 <body>
     <header>
@@ -26,12 +27,26 @@
 
             <input type="text" placeholder="Name" class="login-input">
             <input type="password" placeholder="Passwort" class="login-input">
-            <button class="login-button">Login</button>
+            <input type="hidden" id="referrer" name="referrer">
+            <button class="login-button" onclick="redirectUser()">Login</button>
         </div>
     </main>
 
     <footer>
         Asimov Squad
     </footer>
+    <script>
+        function redirectUser() {
+            const role = document.querySelector('.login-box select').value;
+            const referrerInput = document.getElementById('referrer');
+            if (role === 'student') {
+                referrerInput.value = '/overview';
+                window.location.href = '/overview';
+            } else if (role === 'tutor') {
+                referrerInput.value = '/overviewtutor';
+                window.location.href = '/overviewtutor';
+            }
+        }
+    </script>
 </body>
 </html>

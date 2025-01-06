@@ -1,5 +1,6 @@
 let randomTimes = {};
 let messageHistory = JSON.parse(localStorage.getItem('messageHistory')) || {};
+let currentChat = localStorage.getItem('currentChat');
 
 function getRandomWorkHour(tutorName) {
   if (!randomTimes[tutorName]) {
@@ -79,14 +80,18 @@ function sendMessage() {
     saveMessageHistory();
 
     // Update last message in sidebar
+    const lastMessage = messageHistory[chatTitle].slice(-1)[0].text;
     const tutorName = chatTitle.split(' ')[2];
-    updateLastMessage(tutorName, 'Ok');
+    updateLastMessage(tutorName, lastMessage);
 
     input.value = '';
   }
 }
 
 function switchChat(tutorName, initialMessage) {
+  currentChat = tutorName;
+  localStorage.setItem('currentChat', currentChat);
+
   const now = new Date();
   let formattedDate;
   if (tutorName === 'Tutor 3') {
@@ -151,15 +156,27 @@ function switchChat(tutorName, initialMessage) {
   updateLastMessage(tutorName, lastMessage);
 }
 
-// Initialize chat with initial messages
-document.querySelectorAll('.tutor-box').forEach(box => {
-  const tutorName = box.querySelector('h4').textContent.split(' - ')[0];
-  const initialMessage = box.querySelector('p').textContent.split(': ')[1];
-  switchChat(tutorName, initialMessage);
+// Initialize chat with the current chat
+document.addEventListener('DOMContentLoaded', () => {
+  // Update the last message in the sidebar for each tutor
+  document.querySelectorAll('.tutor-box').forEach(box => {
+    const tutorName = box.querySelector('h4').textContent.split(' - ')[0];
+    const chatTitle = `Chat mit ${tutorName}`;
+    if (messageHistory[chatTitle]) {
+      const lastMessage = messageHistory[chatTitle].slice(-1)[0].text;
+      updateLastMessage(tutorName, lastMessage);
+    } else {
+      updateLastMessage(tutorName, '');
+    }
+  });
+
+  const initialMessageElement = document.querySelector(`.tutor-box[onclick*="${currentChat}"] p`);
+  const initialMessage = initialMessageElement ? initialMessageElement.textContent.split(': ')[1] || 'Kann ich helfen?' : 'Kann ich helfen?';
+  switchChat(currentChat, initialMessage);
 });
 
 document.getElementById('messageInput').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     sendMessage();
   }
-})
+});
