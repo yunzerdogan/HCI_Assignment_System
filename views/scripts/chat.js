@@ -19,7 +19,14 @@ function saveMessageHistory() {
   localStorage.setItem('messageHistory', JSON.stringify(messageHistory));
 }
 
+function clearMessageHistory() {
+  localStorage.removeItem('messageHistory');
+  messageHistory = {};
+}
+
+
 function updateLastMessage(tutorName, message) {
+  
   const tutorBox = document.querySelector(`.tutor-box[onclick*="${tutorName}"] p`);
   if (tutorBox) {
     tutorBox.textContent = `Letzte Nachricht: ${message}`;
@@ -27,7 +34,9 @@ function updateLastMessage(tutorName, message) {
 }
 
 function sendMessage() {
+
   const input = document.getElementById('messageInput');
+  console.log(input);
   const message = input.value.trim();
   if (message) {
     const messages = document.getElementById('messages');
@@ -81,7 +90,10 @@ function sendMessage() {
 
     // Update last message in sidebar
     const lastMessage = messageHistory[chatTitle].slice(-1)[0].text;
-    const tutorName = chatTitle.split(' ')[2];
+    const tutor = chatTitle.split(' ')[2];
+    const Num = chatTitle.split(' ')[3];
+    const tutorName = `${tutor} ${Num}`;
+    console.log(tutorName);
     updateLastMessage(tutorName, lastMessage);
 
     input.value = '';
@@ -158,15 +170,28 @@ function switchChat(tutorName, initialMessage) {
 
 // Initialize chat with the current chat
 document.addEventListener('DOMContentLoaded', () => {
+  //clearMessageHistory();
   // Update the last message in the sidebar for each tutor
   document.querySelectorAll('.tutor-box').forEach(box => {
     const tutorName = box.querySelector('h4').textContent.split(' - ')[0];
+    console.log(tutorName);
     const chatTitle = `Chat mit ${tutorName}`;
     if (messageHistory[chatTitle]) {
       const lastMessage = messageHistory[chatTitle].slice(-1)[0].text;
+      console.log(lastMessage);
       updateLastMessage(tutorName, lastMessage);
     } else {
-      updateLastMessage(tutorName, '');
+      console.log("No message history");
+      if(tutorName === "Tutor 1"){
+        const initialMessage = "Kann ich helfen?";
+        updateLastMessage(tutorName, initialMessage);
+      }
+      else if(tutorName === "Tutor 2"){
+        const initialMessage = "Bitte sehen Sie die Datei an.";
+        updateLastMessage(tutorName, initialMessage);
+      }else if(tutorName === "Tutor 3"){
+        const initialMessage = "Vielen Dank!";
+        updateLastMessage(tutorName, initialMessage);}
     }
   });
 
