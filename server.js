@@ -1,8 +1,5 @@
 const express = require('express');
-const sqlite = require('sqlite3')
-const fs = require('fs');
 const path = require('path');
-const { Course } = require('./classes/models/course');
 
 const app = express();
 
