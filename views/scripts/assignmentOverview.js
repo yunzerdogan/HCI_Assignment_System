@@ -91,10 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const fileType = file.type; 
             if (!validFileTypes.includes(fileType)) {
                 alert('Only zip files are allowed.');
+                location.reload();
                 return;
             }
             if (fileSize > maxFileSize) {
                 alert('File size must not exceed 5MB.');
+                location.reload();
                 return;
             }
 
@@ -103,5 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
             fileItem.textContent = file.name;
             dropZone.appendChild(fileItem);
         }
+        const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete-button');
+            deleteButton.addEventListener('click', () => {
+                fileItem.remove();
+                location.reload();
+            });
+
+            fileItem.appendChild(deleteButton);
     }
 });
