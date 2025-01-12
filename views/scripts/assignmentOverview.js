@@ -84,10 +84,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function handleFiles(files) {
         const maxFileSize = 5 * 1024 * 1024; // 5MB
-        const validFileTypes = ['application/zip'];
+        const validFileTypes = ['application/zip', 'application/x-zip-compressed', 'multipart/x-zip'];
 
         for (const file of files) {
             const fileSize = file.size; 
+            const fileType = file.type; 
+            if (!validFileTypes.includes(fileType)) {
+                alert('Only zip files are allowed.');
+                return;
+            }
             if (fileSize > maxFileSize) {
                 alert('File size must not exceed 5MB.');
                 return;
