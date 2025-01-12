@@ -83,7 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function handleFiles(files) {
+        const maxFileSize = 5 * 1024 * 1024; // 5MB
+        const validFileTypes = ['application/zip'];
+
         for (const file of files) {
+            const fileSize = file.size; 
+            if (fileSize > maxFileSize) {
+                alert('File size must not exceed 5MB.');
+                return;
+            }
+
             console.log('File(s) dropped:', file.name);
             const fileItem = document.createElement('div');
             fileItem.textContent = file.name;
