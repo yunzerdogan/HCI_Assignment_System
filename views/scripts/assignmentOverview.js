@@ -85,6 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleFiles(files) {
         const maxFileSize = 5 * 1024 * 1024; // 5MB
         const validFileTypes = ['application/zip', 'application/x-zip-compressed', 'multipart/x-zip'];
+        
+        const progressBarContainer = document.querySelector('.progress-bar-container');
+        const progressBar = document.getElementById('progress-bar');
+
+        progressBarContainer.style.display = 'block'; 
+        progressBar.style.width = '0%'; 
+
+        let progress = 0;
+        const progressInterval = 100 / files.length;
 
         for (const file of files) {
             const fileSize = file.size; 
@@ -104,6 +113,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const fileItem = document.createElement('div');
             fileItem.textContent = file.name;
             dropZone.appendChild(fileItem);
+
+            setTimeout(() => {
+                progress += progressInterval;
+                progressBar.style.width = `${progress}%`;
+    
+                if (progress >= 100) {
+                    setTimeout(() => {
+                        progressBarContainer.style.display = 'none'; 
+                    }, 1000);
+                }
+            }, 500); 
+    
         }
         const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Delete';
