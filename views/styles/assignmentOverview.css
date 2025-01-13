@@ -123,3 +123,17 @@ th {
     margin-top: 5px;
     background-color: #f9f9f9;
 }
+
+.delete-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #cc0000;
+}

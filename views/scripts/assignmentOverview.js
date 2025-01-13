@@ -101,6 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('File(s) dropped:', file.name);
             const fileItem = document.createElement('div');
             fileItem.textContent = file.name;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete-button');
+            deleteButton.addEventListener('click', () => {
+                fileItem.remove();
+                location.reload();
+            });
+
+            fileItem.appendChild(deleteButton);
             dropZone.appendChild(fileItem);
         }
     }
