@@ -64,4 +64,57 @@ function startCountdown() {
 document.addEventListener('DOMContentLoaded', () => {
     loadPoints();
     startCountdown();
+    
+    const dropZone = document.getElementById('drop-zone');
+
+    dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropZone.classList.add('drag-over');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('drag-over');
+    });
+
+    dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropZone.innerHTML = '';
+        dropZone.classList.remove('drag-over');
+        const files = event.dataTransfer.files;
+        handleFiles(files);
+    });
+
+    function handleFiles(files) {
+        const maxFileSize = 5 * 1024 * 1024; // 5MB
+        const validFileTypes = ['application/zip', 'application/x-zip-compressed', 'multipart/x-zip'];
+
+        for (const file of files) {
+            const fileSize = file.size; 
+            const fileType = file.type; 
+            if (!validFileTypes.includes(fileType)) {
+                alert('Only zip files are allowed.');
+                location.reload();
+                return;
+            }
+            if (fileSize > maxFileSize) {
+                alert('File size must not exceed 5MB.');
+                location.reload();
+                return;
+            }
+
+            console.log('File(s) dropped:', file.name);
+            const fileItem = document.createElement('div');
+            fileItem.textContent = file.name;
+            dropZone.appendChild(fileItem);
+        }
+        const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.classList.add('delete-button');
+            deleteButton.addEventListener('click', () => {
+                fileItem.remove();
+                location.reload();
+            });
+
+            fileItem.appendChild(deleteButton);
+    }
 });
