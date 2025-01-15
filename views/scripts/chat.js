@@ -33,8 +33,18 @@ function updateLastMessage(tutorName, message) {
   }
 }
 
-function sendMessage() {
+async function getRandomQuote() {
+  try {
+    const response = await fetch('/random-quote');
+    const data = await response.json();
+    return data.quote;  
+  } catch (error) {
+    console.error('Error fetching quote:', error);
+    return 'Ok';
+  }
+}
 
+async function sendMessage() {
   const input = document.getElementById('messageInput');
   console.log(input);
   const message = input.value.trim();
@@ -67,6 +77,9 @@ function sendMessage() {
     messageHistory[chatTitle].push({ type: 'user', text: message, timestamp: now });
     saveMessageHistory();
 
+    // Fetch random quote for automatic reply
+    const replyMessage = await getRandomQuote();
+
     // Create automatic reply container
     const replyMessageContainer = document.createElement('div');
     replyMessageContainer.classList.add('message-container');
@@ -75,7 +88,7 @@ function sendMessage() {
     const replyMessageBox = document.createElement('div');
     replyMessageBox.classList.add('message-box', 'tutor-message');
     const replyMessageText = document.createElement('h4');
-    replyMessageText.textContent = 'Ok';
+    replyMessageText.textContent = replyMessage;
     const replyTimestamp = document.createElement('div');
     replyTimestamp.classList.add('timestamp');
     replyTimestamp.textContent = `Send: ${formatTime(now.getHours(), now.getMinutes())}`;
@@ -85,7 +98,7 @@ function sendMessage() {
     messages.appendChild(replyMessageContainer);
 
     // Save reply message to history
-    messageHistory[chatTitle].push({ type: 'tutor', text: 'Ok', timestamp: now });
+    messageHistory[chatTitle].push({ type: 'tutor', text: replyMessage, timestamp: now });
     saveMessageHistory();
 
     // Update last message in sidebar
