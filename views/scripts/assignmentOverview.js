@@ -5,6 +5,13 @@ const pointsHistory = JSON.parse(localStorage.getItem('pointsHistory')) || {
     student4: { "Assignment 01 - HCI": 0, "Assignment 02 - HCI": 0, "Assignment 03 - HCI": 0, "Assignment 04 - HCI": 0, "Assignment 05 - HCI": 0 }
 };
 
+const annonStatus = JSON.parse(localStorage.getItem('annonStatus')) || {
+    student1: false,
+    student2: false,
+    student3: false,
+    student4: false
+};
+
 function updatePoints(button) {
     const container = button.parentElement;
     const input = container.querySelector('.points-input');
@@ -28,7 +35,25 @@ function loadPoints() {
     });
 }
 
+function toggleAnnon() {
+    const student = document.querySelector('.student-dropdown').value;
+    const button = document.querySelector('.annon-button');
+    annonStatus[student] = !annonStatus[student];
+    button.textContent = annonStatus[student] ? 'Anonimität aufheben' : 'Bleibe Annonym';
+    button.classList.toggle('active', annonStatus[student]);
+    localStorage.setItem('annonStatus', JSON.stringify(annonStatus));
+}
+
+function loadAnnonStatus() {
+    const student = document.querySelector('.student-dropdown').value;
+    const button = document.querySelector('.annon-button');
+    button.textContent = annonStatus[student] ? 'Anonimität aufheben' : 'Bleibe Annonym';
+    button.classList.toggle('active', annonStatus[student]);
+}
+
 document.querySelector('.student-dropdown').addEventListener('change', loadPoints);
+document.querySelector('.annon-button').addEventListener('click', toggleAnnon);
+document.querySelector('.student-dropdown').addEventListener('change', loadAnnonStatus);
 
 function startCountdown() {
     const countdownElements = document.querySelectorAll('.countdown');
@@ -62,6 +87,7 @@ function startCountdown() {
 document.addEventListener('DOMContentLoaded', () => {
     loadPoints();
     startCountdown();
+    loadAnnonStatus();
 
     const dropZone = document.getElementById('drop-zone');
 

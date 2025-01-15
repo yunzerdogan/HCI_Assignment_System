@@ -133,3 +133,30 @@ th {
     margin-top: 5px;
     background-color: #f9f9f9;
 }
+
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.annon-button {
+    padding: 10px 20px;
+    background-color: #91AA00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.annon-button:hover {
+    background-color: #728600;
+}
+
+.annon-button.active {
+    background-color: red;
+}
+
+.annon-button.active:hover {
+    background-color: darkred;
+}
