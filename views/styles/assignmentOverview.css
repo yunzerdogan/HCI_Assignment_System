@@ -49,6 +49,7 @@ th, td {
 th {
     background-color: #91AA00;
 }
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -58,16 +59,20 @@ th {
     padding: 10px 0;
     border-top: 1px solid #dee2e6;
 }
+
 .green-background {
     color: white;
 }
+
 .center-text {
     text-align: center;
 }
+
 .green-box h4:first-of-type {
     margin-top: 5px;
     font-size: 1em;
 }
+
 .dashed-box {
     border: 2px dashed #91AA00;
     border-radius: 20px;
@@ -75,9 +80,11 @@ th {
     margin: 20px 0;
     text-align: center;
 }
+
 .dashed-box:hover{
     background-color: #dee2e6;
 }
+
 .submit-button {
     padding: 10px 20px;
     background-color: #91AA00;
@@ -86,29 +93,16 @@ th {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .submit-button:hover {
     background-color: #728600;
 }
+
 .submit-button-container {
     text-align: center;
     margin-top: 10px;
 }
-.progress-bar-container {
-    width: 100%;
-    background-color: #dee2e6;
-    border: 1px solid #91AA00;
-    border-radius: 5px;
-    height: 20px;
-    margin-top: 20px;
-    overflow: hidden;
-    display: none; 
-}
-.progress-bar {
-    width: 0%;
-    height: 100%;
-    background-color: #91AA00;
-    transition: width 0.5s ease;
-}
+
 .student-dropdown {
     padding: 10px;
     margin: 10px 0;
@@ -118,10 +112,10 @@ th {
     color: #91AA00;
     cursor: pointer;
 }
+
 .student-dropdown:hover {
     background-color: #f8f9fa;
 }
-
 
 .dashed-box.drag-over {
     border-color: #00f;
@@ -138,18 +132,4 @@ th {
     border: 1px solid #ccc;
     margin-top: 5px;
     background-color: #f9f9f9;
-}
-
-.delete-button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.delete-button:hover {
-    background-color: #cc0000;
 }
