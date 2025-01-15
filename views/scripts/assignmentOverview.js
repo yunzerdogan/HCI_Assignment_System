@@ -25,12 +25,11 @@ function updatePoints(button) {
 }
 
 function loadPoints() {
-    const student = document.querySelector('.student-dropdown').value;
     document.querySelectorAll('.points-container').forEach(container => {
         const assignmentName = container.closest('tr').querySelector('td').textContent;
         const display = container.querySelector('.points-display');
         const maxPoints = display.getAttribute('data-max-points');
-        const points = pointsHistory[student][assignmentName];
+        const points = pointsHistory[userName][assignmentName];
         display.textContent = `${points}/${maxPoints}`;
     });
 }

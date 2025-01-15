@@ -4,6 +4,13 @@ const np = require('request')
 
 const app = express();
 
+const pointsHistory = {
+  student1: { "Assignment 01 - HCI": 6, "Assignment 02 - HCI": 6, "Assignment 03 - HCI": 5, "Assignment 04 - HCI": 8, "Assignment 05 - HCI": 0 },
+  student2: { "Assignment 01 - HCI": 0, "Assignment 02 - HCI": 0, "Assignment 03 - HCI": 0, "Assignment 04 - HCI": 0, "Assignment 05 - HCI": 0 },
+  student3: { "Assignment 01 - HCI": 0, "Assignment 02 - HCI": 0, "Assignment 03 - HCI": 0, "Assignment 04 - HCI": 0, "Assignment 05 - HCI": 0 },
+  student4: { "Assignment 01 - HCI": 0, "Assignment 02 - HCI": 0, "Assignment 03 - HCI": 0, "Assignment 04 - HCI": 0, "Assignment 05 - HCI": 0 }
+};
+
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, 'classes')));
@@ -23,7 +30,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/overview', (req, res) => {
-  res.render('assignmentOverview');
+  const name = req.query.name;
+  if(pointsHistory.hasOwnProperty(name)){
+    res.render('assignmentOverview', {name})
+  }else{
+    res.status(401).send('Student not found');
+  }
 });
 
 app.get('/overviewtutor', (req, res) => {

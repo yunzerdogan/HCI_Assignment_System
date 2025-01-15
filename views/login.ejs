@@ -25,7 +25,7 @@
                 <option value="prog1">Programmieren I</option>
             </select>
 
-            <input type="text" placeholder="Name" class="login-input">
+            <input type="text" placeholder="Name" id="name" class="login-input">
             <input type="password" placeholder="Passwort" class="login-input">
             <input type="hidden" id="referrer" name="referrer">
             <button class="login-button" onclick="redirectUser()">Login</button>
@@ -49,10 +49,11 @@
     <script>
         function redirectUser() {
             const role = document.querySelector('.login-box select').value;
+            const name = document.getElementById('name').value;
             const referrerInput = document.getElementById('referrer');
             if (role === 'student') {
                 referrerInput.value = '/overview';
-                window.location.href = '/overview';
+                window.location.href = `/overview?name=${encodeURIComponent(name)}`;
             } else if (role === 'tutor') {
                 referrerInput.value = '/overviewtutor';
                 window.location.href = '/overviewtutor';

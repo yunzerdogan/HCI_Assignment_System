@@ -111,6 +111,7 @@ th {
     background-color: white;
     color: #91AA00;
     cursor: pointer;
+    visibility: hidden;
 }
 
 .student-dropdown:hover {
