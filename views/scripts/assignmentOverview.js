@@ -18,7 +18,7 @@ function updatePoints(button) {
     const display = container.querySelector('.points-display');
     const maxPoints = input.max;
     const assignmentName = container.closest('tr').querySelector('td').textContent;
-    const student = document.querySelector('.student-dropdown').value;
+    const student = getStudentFromQuery();
     pointsHistory[student][assignmentName] = input.value;
     display.textContent = `${input.value}/${maxPoints}`;
     localStorage.setItem('pointsHistory', JSON.stringify(pointsHistory));
@@ -34,8 +34,13 @@ function loadPoints() {
     });
 }
 
+function getStudentFromQuery() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('name') || 'student1';
+}
+
 function toggleAnnon() {
-    const student = document.querySelector('.student-dropdown').value;
+    const student = getStudentFromQuery();
     const button = document.querySelector('.annon-button');
     annonStatus[student] = !annonStatus[student];
     button.textContent = annonStatus[student] ? 'Anonimität aufheben' : 'Bleibe Annonym';
@@ -44,15 +49,17 @@ function toggleAnnon() {
 }
 
 function loadAnnonStatus() {
-    const student = document.querySelector('.student-dropdown').value;
+    const student = getStudentFromQuery();
     const button = document.querySelector('.annon-button');
     button.textContent = annonStatus[student] ? 'Anonimität aufheben' : 'Bleibe Annonym';
     button.classList.toggle('active', annonStatus[student]);
 }
 
-document.querySelector('.student-dropdown').addEventListener('change', loadPoints);
 document.querySelector('.annon-button').addEventListener('click', toggleAnnon);
-document.querySelector('.student-dropdown').addEventListener('change', loadAnnonStatus);
+
+const student = getStudentFromQuery();
+    loadPoints(student);
+    loadAnnonStatus(student);
 
 function startCountdown() {
     const countdownElements = document.querySelectorAll('.countdown');
@@ -108,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function handleFiles(files) {
-
         console.log('File(s) dropped:', file.name);
         const fileItem = document.createElement('div');
         fileItem.textContent = file.name;
