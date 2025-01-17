@@ -12,6 +12,56 @@ const annonStatus = JSON.parse(localStorage.getItem('annonStatus')) || {
     student4: false
 };
 
+function toggleLeaderBoard(){
+
+    const leaderBoard = document.getElementById('LeaderBoard-form-container');
+    const button = document.getElementById('leaderboardToggle');
+
+    if(leaderBoard.style.display === 'block'){
+        leaderBoard.style.display = 'none';
+        button.style.backgroundColor = '#91AA00'
+        return;
+    }else{
+        leaderBoard.style.display = 'block';
+        button.style.backgroundColor = '#5d6d00'
+        fetchLeaderBoard();
+    }
+}
+function fetchLeaderBoard(){
+
+    const leaderBoard = document.getElementById('leaderBoard');
+    // Clear existing rows
+    leaderBoard.innerHTML = `
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Punkte</th>
+        </tr>
+    `;
+    // Calculate total points for each student
+    const students = Object.keys(pointsHistory).map(student => {
+        const totalPoints = Object.values(pointsHistory[student]).reduce((sum, points) => sum + points, 0);
+        if(annonStatus[student]){
+            return { name: 'Anonym', points: totalPoints };
+        }
+        return { name: student, points: totalPoints };
+    });
+
+    // Sort students by points in descending order
+    students.sort((a, b) => b.points - a.points);
+
+    // Populate the leaderboard table
+    students.forEach((student, index) => {
+        const row = leaderBoard.insertRow();
+        row.insertCell(0).textContent = index + 1; // Rank
+        row.insertCell(1).textContent = student.name; // Name
+        row.insertCell(2).textContent = student.points; // Points
+    });
+}
+
+    
+
+
 function updatePoints(button) {
     const container = button.parentElement;
     const input = container.querySelector('.points-input');

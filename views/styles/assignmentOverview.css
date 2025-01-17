@@ -162,7 +162,10 @@ th {
     background-color: darkred;
 }
 
+
+
 .openLeaderBoard {
+    max-height: 35px;
     padding: 10px 20px;
     background-color: #91AA00;
     color: white;
@@ -173,8 +176,7 @@ th {
 
 .openLeaderBoard i{
     font-size: 28px;
-    margin-right: 20px;
-
+    margin-bottom: 10px;
 }
 
 .LeaderBoard-Popup{
@@ -183,6 +185,7 @@ th {
     position: fixed;
     z-index: 9;
     width: 320px;
+    display: none;
 }
 
 .form-container {
@@ -191,8 +194,9 @@ th {
     align-items: stretch;
     gap: 10px;
     max-width: 400px;
-    background: white;
+    background: rgb(255, 255, 255);
     border-radius: 10px 10px 6px 6px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
 .LeaderBoard-head{
@@ -213,11 +217,7 @@ th {
     font-weight: 500;
 }
 
-.close-btn{
-    color: #ffffff;
-    cursor: pointer;
 
-}
 
 .Board-container{
     padding: 12px 10px;

@@ -18,21 +18,18 @@
     <h3>Ihre Assignments: <%= name %></h3>
     <div class="annon-button-container">
         <button class="annon-button">Bleibe Annonym</button>
-        <button class="openLeaderBoard" onclick="openLeaderBoar()"><i class="fa fa-comment"></i> Leaderboard</button>
+        <button class="openLeaderBoard" onclick="toggleLeaderBoard()" id="leaderboardToggle">Leaderboard</button>
         <div class="LeaderBoard-Popup" id="LeaderBoard-form-container">
             <form action="#" class="form-container">
                 <div class="LeaderBoard-head">
                     <h4>
-                        <i class="fa fa-comment"> Leaderboard</i>
-                        <span class="close-btn" onclick="closeChatWindow()">
-                            <i class="fa fa-times"></i>
-                        </span>
+                        Leaderboard
                     </h4>
                 </div>
 
                 <div class="Board-container">
                     <div class="board">
-                        <table>
+                        <table id="leaderBoard">
                             <tr class="">
                                 <th>Rank</th>
                                 <th>Name</th>
