@@ -161,3 +161,74 @@ th {
 .annon-button.active:hover {
     background-color: darkred;
 }
+
+.openLeaderBoard {
+    padding: 10px 20px;
+    background-color: #91AA00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.openLeaderBoard i{
+    font-size: 28px;
+    margin-right: 20px;
+
+}
+
+.LeaderBoard-Popup{
+    bottom: 16px;
+    right: 16px;
+    position: fixed;
+    z-index: 9;
+    width: 320px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    max-width: 400px;
+    background: white;
+    border-radius: 10px 10px 6px 6px;
+}
+
+.LeaderBoard-head{
+    display: flex;
+    justify-content: space-between;
+    background: #91AA00;
+    padding: 16px 14px;
+    border-radius: 10px 10px 0px 0px    ;
+}
+
+.LeaderBoard-head i{
+    font-size: 24px;
+    margin-right: 10px;   
+}
+
+.LeaderBoard-head h4{
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+}
+
+.close-btn{
+    color: #ffffff;
+    cursor: pointer;
+
+}
+
+.Board-container{
+    padding: 12px 10px;
+    height: 250px;
+    margin: 10px 0;
+}
+
+.boad{
+    padding: 10px 16px;
+    border-radius: 50px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
