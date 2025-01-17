@@ -103,21 +103,6 @@ th {
     margin-top: 10px;
 }
 
-.student-dropdown {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #91AA00;
-    border-radius: 5px;
-    background-color: white;
-    color: #91AA00;
-    cursor: pointer;
-    visibility: hidden;
-}
-
-.student-dropdown:hover {
-    background-color: #f8f9fa;
-}
-
 .dashed-box.drag-over {
     border-color: #00f;
     background-color: #f0f8ff;
