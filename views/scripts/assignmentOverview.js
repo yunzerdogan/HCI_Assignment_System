@@ -40,7 +40,7 @@ function fetchLeaderBoard(){
     `;
     // Calculate total points for each student
     const students = Object.keys(pointsHistory).map(student => {
-        const totalPoints = Object.values(pointsHistory[student]).reduce((sum, points) => sum + points, 0);
+        const totalPoints = Object.values(pointsHistory[student]).reduce((sum, points) => sum + parseInt(points), 0);
         if(annonStatus[student]){
             return { name: 'Anonym', points: totalPoints };
         }
@@ -54,7 +54,18 @@ function fetchLeaderBoard(){
     students.forEach((student, index) => {
         const row = leaderBoard.insertRow();
         row.insertCell(0).textContent = index + 1; // Rank
-        row.insertCell(1).textContent = student.name; // Name
+        if (index === 0) {
+            row.insertCell(1).textContent = `${student.name} 🥇`; // Name
+        }
+        else if (index === 1) {
+            row.insertCell(1).textContent = `${student.name} 🥈`; // Name
+        }
+        else if (index === 2) {
+            row.insertCell(1).textContent = `${student.name} 🥉`; // Name
+        }
+        else {
+            row.insertCell(1).textContent = student.name;
+        }
         row.insertCell(2).textContent = student.points; // Points
     });
 }
